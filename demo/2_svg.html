@@ -44,5 +44,89 @@
         <text x="20" y="20" text-anchor="start">测试文字测试文字</text>
     </svg>
 </div>
+
+<div>
+    <svg version="1.1" height="30" xmlns="http://www.w3.org/2000/svg">
+        <text y="20" font-size="20px" font-weight="bold" stroke="red" fill="transparent">Hello World!</text>
+    </svg>
+</div>
+
+<div>
+    <text x="10" y="50">
+        <tspan font-weight="bold">测试</tspan>文字
+    </text>
+</div>
+
+<div>
+    <svg version="1.1" height="100" xmlns="http://www.w3.org/2000/svg">
+        <text x="10" y="20">
+            测试文字<tspan x="100" dx="0 10 10 10" dy="0 10 20 10" rotate="30" font-weight="bold">你好世界</tspan>
+        </text>
+    </svg>
+</div>
+
+<div>
+    <svg version="1.1" width="300" height="100" xmlns="http://www.w3.org/2000/svg">
+        <path id="my_path" d="M 20,20 C 50 50, 160 50, 160 20" fill="none"/>
+        <text>
+            <textPath xlink:href="#my_path">你好世界世界你好</textPath>
+        </text>
+    </svg>
+</div>
+
+<svg version="1.1" width="300" height="100" xmlns="http://www.w3.org/2000/svg">
+    <text id="sinText" x="10" y="50">你好世界世界你好</text>
+</svg>
+<br>
+<button id="btn1">开始运动</button>
+<button id="btn2">暂停运动</button>
+<script>
+    //n为文本的数量
+    var n = sinText.innerHTML.length;
+    //x和y分别储存dx和dy的值
+    var x = [],y = [];
+    //设置x的值
+    for(var i = 0; i < n; i++){
+        x.push(2*Math.PI/n);
+    }
+    function arrange(t){
+        //清空数组
+        y = [];
+        var ly = 0,cy;
+        for(i = 0; i < n; i++){
+            //计算当前的曲线的cy值
+            cy = -20*Math.sin(0.5*i+t);
+            //将y的差值保存到数组中
+            y.push(cy-ly);
+            //保存上一个y的值
+            ly = cy;
+        }
+    }
+    function render(){
+        //将x、y数组中的值渲染到dx、dy中
+        sinText.setAttribute('dx',x.join(' '));
+        sinText.setAttribute('dy',y.join(' '));
+    }
+    (function init(){
+        arrange(0);
+        render();
+    })();
+    var t = 0;
+    var oTimer = null;
+    function frame(){
+        t +=0.1;
+        arrange(t);
+        render();
+        oTimer =  requestAnimationFrame(frame);
+    }
+    btn1.onclick = function(){
+        cancelAnimationFrame(oTimer);
+        oTimer =  requestAnimationFrame(frame);
+    }
+    btn2.onclick = function(){
+        cancelAnimationFrame(oTimer);
+    }
+</script>
+
 </body>
 </html>
