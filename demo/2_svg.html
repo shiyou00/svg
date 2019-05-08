@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>svg</title>
+</head>
+<body>
+<div>
+    <svg version="1.1" height="70" xmlns="http://www.w3.org/2000/svg">
+        <text x="30" y="30">Hello World!</text>
+        <text x="30" y="50" dx="10 10 20 30 40">Hello World!</text>
+    </svg>
+</div>
+<div>
+    <svg version="1.1" height="70" xmlns="http://www.w3.org/2000/svg">
+        <text x="30" y="30">Hello World!</text>
+        <text x="30" y="50" dx="10">Hello World!</text>
+    </svg>
+</div>
+<div>
+    <svg version="1.1" width="300" height="100" xmlns="http://www.w3.org/2000/svg">
+        <polyline points="160 80, 160 20, 300,20" fill="transparent" stroke="black"/>
+        <text x="160" y="20" text-anchor="start">start对齐</text>
+        <text x="160" y="50" text-anchor="middle">middle对齐</text>
+        <text x="160" y="80" text-anchor="end">end对齐</text>
+    </svg>
+</div>
+
+<div>
+    <svg version="1.1" id="drawing" width="200" height="100" xmlns="http://www.w3.org/2000/svg" dominant-baseline="auto">
+        <line x1="20" y1="20" x2="180" y2="20" stroke="#000"></line>
+        <text x="20" y="20" text-anchor="start">测试文字测试文字</text>
+    </svg>
+</div>
+<div>
+    <svg version="1.1" id="drawing" width="200" height="100" xmlns="http://www.w3.org/2000/svg" dominant-baseline="hanging">
+        <line x1="20" y1="20" x2="180" y2="20" stroke="#000"></line>
+        <text x="20" y="20" text-anchor="start">测试文字测试文字</text>
+    </svg>
+</div>
+<div>
+    <svg version="1.1" id="drawing" width="200" height="100" xmlns="http://www.w3.org/2000/svg" dominant-baseline="alphabetic">
+        <line x1="20" y1="20" x2="180" y2="20" stroke="#000"></line>
+        <text x="20" y="20" text-anchor="start">测试文字测试文字</text>
+    </svg>
+</div>
+</body>
+</html>
